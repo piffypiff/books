@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Книги</title>
+</head>
+<body>
+    <h1>Книги дороже 2000 тг</h1>
+    <ul>
+        {% for book in books_expensive %}
+            <li>{{ book.title }} — {{ book.price }} тг</li>
+        {% empty %}
+            <li>Нет книг дороже 2000 тг</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Книги после 2010 года</h2>
+    <ul>
+        {% for book in books_after_2010 %}
+            <li>{{ book.title }} ({{ book.year }})</li>
+        {% empty %}
+            <li>Нет книг после 2010 года</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Книги автора Толстой</h2>
+    <ul>
+        {% for book in books_tolstoy %}
+            <li>{{ book.title }} — {{ book.author }}</li>
+        {% empty %}
+            <li>Нет книг автора Толстой</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'search_books' %}">Перейти к поиску</a></p>
+</body>
+</html>

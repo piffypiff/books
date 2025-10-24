@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Поиск</title>
+</head>
+<body>
+    <h1>Поиск по автору</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Введите автора" value="{{ query }}">
+        <button type="submit">Поиск</button>
+    </form>
+
+    {% if query %}
+        <h2>Результаты для "{{ query }}"</h2>
+        <ul>
+            {% for book in results %}
+                <li>{{ book.title }} — {{ book.author }} ({{ book.year }}) — {{ book.price }} тг</li>
+            {% empty %}
+                <li>Ничего не найдено</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><a href="{% url 'books_list' %}">Назад</a></p>
+</body>
+</html>
